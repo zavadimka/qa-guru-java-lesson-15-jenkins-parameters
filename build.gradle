@@ -3,7 +3,7 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
-group 'com.zavada'
+group 'com.zavadimka'
 
 repositories {
     mavenCentral()
@@ -35,8 +35,6 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion"
     )
-
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.1'
 }
 
 tasks.withType(JavaCompile) {
@@ -45,6 +43,7 @@ tasks.withType(JavaCompile) {
 
 tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
@@ -57,5 +56,11 @@ tasks.withType(Test) {
 task demoqa_tests(type: Test) {
     useJUnitPlatform {
         includeTags("demoqa")
+    }
+}
+
+task properties_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("property")
     }
 }
