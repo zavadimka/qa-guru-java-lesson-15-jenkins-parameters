@@ -61,6 +61,6 @@ task demoqa_tests(type: Test) {
 
 task properties_tests(type: Test) {
     useJUnitPlatform {
-        includeTags("property")
+        includeTags("property2")
     }
 }
