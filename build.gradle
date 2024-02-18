@@ -39,11 +39,11 @@ dependencies {
     )
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     useJUnitPlatform()
     systemProperties(System.getProperties())
 
@@ -55,37 +55,37 @@ tasks.withType(Test) {
     }
 }
 
-task demoqa_tests(type: Test) {
+tasks.register('demoqa_tests', Test) {
     useJUnitPlatform {
         includeTags("demoqa")
     }
 }
 
-task property1_test(type: Test) {
+tasks.register('property1_test', Test) {
     useJUnitPlatform {
         includeTags("property1")
     }
 }
 
-task property2_test(type: Test) {
+tasks.register('property2_test', Test) {
     useJUnitPlatform {
         includeTags("property2")
     }
 }
 
-task owner1_test(type: Test) {
+tasks.register('owner1_test', Test) {
     useJUnitPlatform {
         includeTags("owner1")
     }
 }
 
-task owner2_test(type: Test) {
+tasks.register('owner2_test', Test) {
     useJUnitPlatform {
         includeTags("owner2")
     }
 }
 
-task owner3_test(type: Test) {
+tasks.register('owner3_test', Test) {
     useJUnitPlatform {
         includeTags("OwnerEnvironment")
     }
